@@ -1,0 +1,39 @@
+[
+  {
+    "category": "mobile",
+    "name": "iphone 14Pro Max",
+    "color": "black",
+    "price": "400000"
+  },
+  {
+    "category": "leptop",
+    "name": "MacBoock Air",
+    "color": "silver",
+    "price": "80000"
+  },
+  {
+    "category": "tablet",
+    "name": "Ipad mini 3",
+    "color": "cold",
+    "price": "15000"
+  },
+  {
+    "category": "accessories",
+    "name": "AirPods",
+    "color": "white",
+    "price": "10000"
+  },
+  {
+    "category": "accessories",
+    "name": "mouse",
+    "color": "white",
+    "price": "3000"
+  },
+  {
+    "category": "accessories",
+    "name": "keyboard",
+    "color": "white",
+    "price": "5000"
+  }
+  
+]
