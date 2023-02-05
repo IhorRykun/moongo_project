@@ -88,6 +88,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
+const auth = require("./middleware/auth");
+
+app.post("/welcome", auth, (req, res) => {
+  res.status(200).send("Welcome 🙌 ");
+});
+
 const PORT = process.env.PORT || 8000;
 
 app.use("/api/products", products);
