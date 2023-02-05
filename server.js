@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const cors = require('cors')
+const cors = require("cors");
 const mongoose = require("mongoose");
 
 require("dotenv").config();
@@ -19,6 +19,44 @@ const app = express();
 app.use(express.json());
 app.use(errorHandler);
 app.use(cors());
+app.post("/register", async (req, res) => {
+  try {
+    const { first_name, last_name, email, password } = req.body;
+
+    if (!(email && password && first_name && last_name)) {
+      res.status(400).send("All input is required");
+    }
+
+    const oldUser = await User.findOne({ email });
+
+    if (oldUser) {
+      return res.status(409).send("User Already Exist. Please Login");
+    }
+
+    encryptedPassword = await bcrypt.hash(password, 10);
+
+    const user = await User.create({
+      first_name,
+      last_name,
+      email: email.toLowerCase(),
+      password: encryptedPassword
+    });
+
+    const token = jwt.sign(
+      { user_id: user._id, email },
+      process.env.TOKEN_KEY,
+      {
+        expiresIn: "2h"
+      }
+    );
+
+    user.token = token;
+
+    res.status(201).json(user);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 const PORT = process.env.PORT || 8000;
 
