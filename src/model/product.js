@@ -7,6 +7,6 @@ const ProductsSchema = new Schema({
   price: String
 });
 
-const ProductsModel = model("Products", ProductsSchema);
+const ProductsModel = model("Product", ProductsSchema);
 
 module.exports = ProductsModel;
