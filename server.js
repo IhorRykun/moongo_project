@@ -10,14 +10,17 @@ mongoose.Promise = global.Promise;
 dotenv.config({ path: "./.env" });
 
 const errorHandler = require("./src/middleware/error");
-const products = require("./src/routers/products");
+const authMiddleware = require("./src/middleware/auth");
+
+const products = require("./src/routers/Products");
+const authRouter = require("./src/routers/Auth");
+
 const MongoClient = require("./src/database/MongoClient");
 
 MongoClient.init();
 const app = express();
 
 app.use(express.json());
-app.use(errorHandler);
 app.use(cors());
 
 app.post("/register", async (req, res) => {
@@ -88,16 +91,16 @@ app.post("/login", async (req, res) => {
   }
 });
 
-const auth = require("./src/middleware/auth");
-
-app.post("/welcome", auth, (req, res) => {
+app.post("/welcome", authMiddleware, (req, res) => {
   res.status(200).send("Welcome 🙌 ");
 });
 
 const PORT = process.env.PORT || 8000;
 
 app.use("/api/products", products);
+app.use("/api/auth", authRouter);
 
+app.use(errorHandler);
 const server = app.listen(
   PORT,
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
