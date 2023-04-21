@@ -14,7 +14,7 @@ class MongoDBClient {
     console.log("Opened mongo connection");
 
     // README: Create a unique index on the token key in the pushTokens collection
-    this.db = this.client.db("Shop_products");
+    this.db = this.client.db("Product_shop");
   }
 
   async close() {

@@ -1,7 +1,7 @@
 const MongoClient = require("../../database/MongoClient");
 const { ObjectId } = require("mongodb");
 
-const getCollection = () => MongoClient.getDb().collection("products");
+const getCollection = () => MongoClient.getDb().collection("product");
 
 function getProducts() {
   return getCollection().find({}).toArray();

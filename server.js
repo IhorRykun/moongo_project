@@ -3,9 +3,9 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-require("dotenv").config();
-
 mongoose.Promise = global.Promise;
+
+
 
 dotenv.config({ path: "./.env" });
 
