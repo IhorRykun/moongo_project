@@ -5,8 +5,6 @@ const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
 
-
-
 dotenv.config({ path: "./.env" });
 
 const errorHandler = require("./src/middleware/error");
