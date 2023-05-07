@@ -104,3 +104,10 @@ const server = app.listen(
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );
 
+
+
+MONGO_URI=mongodb+srv://ihorrykun:hUhjibKAUhYrmULI@products.j35f4cn.mongodb.net/?retryWrites=true&w=majority
+# Use POSTGRES OR MONGODB
+DATABASE_PROVIDER=MONGODB
+PORT=8000
+TOKEN_KEY=DsaJDHKSFJASHKJFHKJASFdsad
